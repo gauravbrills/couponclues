@@ -16,7 +16,7 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
-import com.sapient.couponclues.config.SampleWebStaticApplication;
+import com.sapient.couponclues.config.CouponCluesApplication;
 
 /**
  * Basic integration tests for demo application.
@@ -24,11 +24,11 @@ import com.sapient.couponclues.config.SampleWebStaticApplication;
  * @author Dave Syer
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = SampleWebStaticApplication.class)
+@SpringApplicationConfiguration(classes = CouponCluesApplication.class)
 @WebAppConfiguration
 @IntegrationTest("server.port=8888")
 @DirtiesContext
-public class SampleWebStaticApplicationTests {
+public class CouponCluesAppConfigTes {
 
     @Value("${local.server.port}")
     private String port = "0";
