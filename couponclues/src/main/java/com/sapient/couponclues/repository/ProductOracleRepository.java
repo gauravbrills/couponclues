@@ -8,4 +8,6 @@ import com.sapient.couponclues.model.ProductOracle;
 
 public interface ProductOracleRepository extends ElasticsearchRepository<ProductOracle, String> {
 
+    List<ProductOracle> findByproductId1(final String productId);
+
 }
