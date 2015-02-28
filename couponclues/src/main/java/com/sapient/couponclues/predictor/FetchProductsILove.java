@@ -9,6 +9,8 @@ import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.collections.Predicate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -18,6 +20,7 @@ import com.sapient.couponclues.model.UserTransaction;
 import com.sapient.couponclues.repository.CouponDetailRepository;
 import com.sapient.couponclues.repository.ProductOracleRepository;
 import com.sapient.couponclues.repository.UserTransactionRepository;
+import com.sapient.couponclues.rest.CouponRequest;
 
 /**
  * @author grawat
@@ -73,6 +76,25 @@ public class FetchProductsILove {
             }
         }
         return couponDetails;
+
+    }
+
+    public List<CouponDetails> fetchByCat(final String userId, final CouponRequest couponRequest) {
+
+        final List<CouponDetails> coupons = fetch(userId);
+        return (List<CouponDetails>) CollectionUtils.select(coupons, new Predicate() {
+
+            @Override
+            public boolean evaluate(final Object on) {
+
+                CouponDetails a = (CouponDetails) on;
+                for (String category : couponRequest.getCategories()) {
+                    if (a.getProductCategory().equals(category))
+                        return true;
+                }
+                return false;
+            }
+        });
 
     }
 }

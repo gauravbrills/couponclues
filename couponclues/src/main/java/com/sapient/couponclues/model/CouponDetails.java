@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.elasticsearch.annotations.Document;
 
 @Data
@@ -12,32 +13,36 @@ import org.springframework.data.elasticsearch.annotations.Document;
 @NoArgsConstructor
 @Document(indexName = "coupondetails", type = "coupondetails", refreshInterval = "-1")
 public class CouponDetails {
-	
-	private String userId;
-	
-	@Id
-	private String couponId;
+    @Id
+    private String id;
 
-	private String couponIssuerSite;
+    private String couponId;
 
-	private String discountPc;
+    private String userId;
 
-	private String issueDate;
+    private String couponIssuerSite;
 
-	private String validTill;
+    private String discountPc;
 
-	private String couponInfo;
+    private String issueDate;
 
-	private String prodId;
-	
-	private String expireReason;
+    private String validTill;
 
-	private String couponType;
-	
-	private String productCategory;
-	
-	private String productName;
-	
-	private String comments;
+    private String couponInfo;
+
+    private String prodId;
+
+    private String expireReason;
+
+    private String couponType;
+
+    private String productCategory;
+
+    private String productName;
+
+    private String comments;
+
+    @Transient
+    private Integer rank;
 
 }

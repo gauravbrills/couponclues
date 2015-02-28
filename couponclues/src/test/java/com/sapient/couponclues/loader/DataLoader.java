@@ -4,7 +4,6 @@
 package com.sapient.couponclues.loader;
 
 import java.io.InputStream;
-import java.util.Date;
 import java.util.List;
 
 import org.junit.Test;
@@ -14,8 +13,10 @@ import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.sapient.couponclues.config.CouponCluesApplication;
+import com.sapient.couponclues.model.CouponDetails;
 import com.sapient.couponclues.model.UserTransaction;
 import com.sapient.couponclues.predictor.ProductAffinityRanker;
+import com.sapient.couponclues.repository.CouponDetailRepository;
 import com.sapient.couponclues.repository.UserTransactionRepository;
 import com.sapient.couponclues.transform.IMarshaller;
 
@@ -30,10 +31,21 @@ public class DataLoader {
     UserTransactionRepository transactionRepository;
 
     @Autowired
+    CouponDetailRepository couponDetailRepository;
+
+    @Autowired
     IMarshaller marshaller;
 
     @Autowired
     ProductAffinityRanker affinityRanker;
+
+    @Test
+    public void insertCouponDts() {
+        // push coupon details
+        InputStream is = getClass().getResourceAsStream("/data/couponDetails.json");
+        List<CouponDetails> coupondetails = marshaller.decodeList(is, CouponDetails.class);
+        couponDetailRepository.save(coupondetails);
+    }
 
     @Test
     public void insertIndexes() {
@@ -42,9 +54,8 @@ public class DataLoader {
         InputStream is = getClass().getResourceAsStream("/data/transactions.json");
         List<UserTransaction> decodeList = marshaller.decodeList(is, UserTransaction.class);
         transactionRepository.save(decodeList);
-    }
 
-    @Test
+    }
     public void testProductRanker() {
 
         affinityRanker.rank();
