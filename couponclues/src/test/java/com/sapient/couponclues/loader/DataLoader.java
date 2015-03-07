@@ -14,9 +14,11 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.sapient.couponclues.config.CouponCluesApplication;
 import com.sapient.couponclues.model.CouponDetails;
+import com.sapient.couponclues.model.UserDetails;
 import com.sapient.couponclues.model.UserTransaction;
 import com.sapient.couponclues.predictor.ProductAffinityRanker;
 import com.sapient.couponclues.repository.CouponDetailRepository;
+import com.sapient.couponclues.repository.UserDetailsRepository;
 import com.sapient.couponclues.repository.UserTransactionRepository;
 import com.sapient.couponclues.transform.IMarshaller;
 
@@ -32,6 +34,9 @@ public class DataLoader {
 
     @Autowired
     CouponDetailRepository couponDetailRepository;
+
+    @Autowired
+    UserDetailsRepository detailsRepository;
 
     @Autowired
     IMarshaller marshaller;
@@ -54,6 +59,16 @@ public class DataLoader {
         InputStream is = getClass().getResourceAsStream("/data/transactions.json");
         List<UserTransaction> decodeList = marshaller.decodeList(is, UserTransaction.class);
         transactionRepository.save(decodeList);
+
+    }
+
+    @Test
+    public void insertUserdetails() {
+
+        // Insert User Transactions
+        InputStream is = getClass().getResourceAsStream("/data/userDetails.json");
+        List<UserDetails> decodeList = marshaller.decodeList(is, UserDetails.class);
+        detailsRepository.save(decodeList);
 
     }
     public void testProductRanker() {

@@ -7,6 +7,7 @@ import javax.websocket.server.PathParam;
 import lombok.extern.log4j.Log4j;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -28,16 +29,17 @@ public class CreatePredictions {
     @Autowired
     FetchProductsILove fetchProductsILove;
 
-    @RequestMapping("/fetchCouponsILove/{userId}")
-    List<CouponDetails> fetchCouponsILove(@PathParam("userId")
+    @RequestMapping(value = "/fetchCouponsILove/{userId}", method = RequestMethod.GET)
+    List<CouponDetails> fetchCouponsILove(@PathVariable("userId")
     final String userId) {
 
+        System.out.println(userId);
         return fetchProductsILove.fetch(userId);
 
     }
 
     @RequestMapping(value = "/fetchCouponsILove/{userId}", method = RequestMethod.POST)
-    List<CouponDetails> fetchCouponsILoveByCategory(@PathParam("userId")
+    List<CouponDetails> fetchCouponsILoveByCategory(@PathVariable("userId")
     final String userId, @RequestBody
     final CouponRequest couponRequest) {
 
