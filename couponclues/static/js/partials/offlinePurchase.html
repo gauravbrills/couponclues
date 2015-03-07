@@ -1,0 +1,33 @@
+<a href="#/coupon">Home</a>
+<table class="table table-bordered table-striped table-hover">
+	<thead>
+		<tr>
+			<th>Catagory</th>
+			<th>Product</th>
+			<th>Quantity</th>
+			<th>Date</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="item in rowCount">
+			<td>
+				<select class="form-control">
+				  <option ng-repeat="data in offlineData">{{data.prod_category}}</option>
+				</select>
+			</td>
+			<td>
+				<select class="form-control">
+				  <option ng-repeat="data in offlineData">{{data.prod_name}}</option>
+				</select>
+			</td>
+			<td><input type="number" min=1 value=1 class="form-control"></td>
+			<td><input type="date" class="form-control"/></td>
+		</tr>
+	</tbody>
+</table>
+<div class="row">
+	<div class="col-md-12">
+		<button class="btn btn-primary" ng-click="addRow()">Add</button>
+		<button class="btn btn-primary" ng-click="removeRow()">Remove</button>
+	</div>
+</div>
