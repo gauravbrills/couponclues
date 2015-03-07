@@ -78,6 +78,7 @@ public class FetchProductsILove {
      * @param couponRequest the coupon request
      * @return the list
      */
+    @SuppressWarnings("unchecked")
     public List<CouponDetails> fetchByCat(final String userId, final CouponRequest couponRequest) {
 
         final List<CouponDetails> coupons = fetch(userId);

@@ -2,10 +2,6 @@ package com.sapient.couponclues.rest;
 
 import java.util.List;
 
-import javax.websocket.server.PathParam;
-
-import lombok.extern.log4j.Log4j;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,7 +15,6 @@ import com.sapient.couponclues.predictor.FetchProductsILove;
 import com.sapient.couponclues.predictor.ProductAffinityRanker;
 
 @RestController
-@Log4j
 @RequestMapping(value = "/brain")
 public class CreatePredictions {
 
