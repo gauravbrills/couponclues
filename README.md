@@ -9,6 +9,6 @@ Please seek permissions before copying the code ..
 
 Cheers :)
 
-# updates
+## updates
 
 * dockerized the app - see the dockerfile added 
