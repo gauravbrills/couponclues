@@ -12,3 +12,4 @@ Cheers :)
 ## updates
 
 * dockerized the app - see the dockerfile added 
+* use elasticsearch as the link name when linking couponclues container with dockerized elasticsearch container
