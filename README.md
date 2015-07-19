@@ -8,3 +8,7 @@ Please seek permissions before copying the code ..
 
 
 Cheers :)
+
+# updates
+
+* dockerized the app - see the dockerfile added 
