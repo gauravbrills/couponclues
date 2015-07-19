@@ -1,0 +1,93 @@
+<div class="row">
+		   	   <div class="col-md-2 sidebar">
+					<div id="sidebar-wrapper">
+			            <ul class="sidebar-nav">
+			            	 <li class="sidebar-brand">
+			                    Catagory
+			                </li>
+			                <li >
+			                    <label>
+								      <input type="checkbox" ng-model="filter.mobile" ng-true-value="mobile"> Mobile
+								</label>
+			                </li>
+			                 <li>
+			                    <label>
+								      <input type="checkbox" ng-model="filter.laptop" ng-true-value="laptop"> Laptop
+								</label>
+			                </li>
+			                 <li>
+			                    <label>
+								      <input type="checkbox" ng-model="filter.shirt" ng-true-value="shirt"> Shirt
+								</label>
+			                </li>
+			                 <li>
+			                    <label>
+								      <input type="checkbox" ng-model="filter.trousers" ng-true-value="trousers"> Trousers
+								</label>
+			                </li>
+			                <li>
+			                    <label>
+								      <input type="checkbox" ng-model="filter.kitchen" ng-true-value="kitchen"> Kitchen
+								</label>
+			                </li>
+			                <li>
+			                    <label>
+								      <input type="checkbox" ng-model="filter.cricket" ng-true-value="cricket"> Cricket
+								</label>
+			                </li>
+			                <li>
+			                    <button class="btn btn-primary" ng-click="getFilterResult(filter)">submit</button>
+			                </li>
+			            </ul>
+			        </div>
+		   	   </div>
+		   	   <div class="col-md-10 mainContent" >
+		   	   	  <div class="row filter">
+		   	   	  	<div class="col-md-4 col-xs-4 col-md-offset-8">
+		   	   	  		<select class="form-control" ng-model="sortByData">
+						  <option value="discountPc">Discount percent</option>
+						  <option value="validTill">Expiry Date</option>
+						  <option value="rank">Ranking</option>
+						</select>
+		   	   	  	</div>
+		   	   	  </div>
+		   	   	  <hr>
+		   	   	  <div class="row" style="background:pink;border:1px solid black;">
+		   	   	  	 <div class="col-md-3" id="c100127" ng-if="(coupon.rank==0 || coupon.rank==null)" ng-repeat="coupon in resultData | orderBy:sortByData">
+		   	   	  	 		<div class="offer-small offer" style="background:url('img/gift.jpg')">
+						        <div class="vendor-image" style="background-color:#ffffff">
+						            <a href="#"><img src="img/{{coupon.couponIssuerSite}}.jpg" alt="{{coupon.couponIssuerSite}}"></a>
+						        </div>
+						        <div id="c100127" class="offer-title ">
+						            <a href="#">{{coupon.couponInfo}} on {{coupon.productName}}</a>
+						        </div>
+					            <div class="offer-getcode">
+									<div href="#" class="btn btn-cd btn-coupon coupon-click" >Avail {{coupon.discountPc}} %</div>
+					             </div>
+					             <div class="vendor-offer-count trim-content">
+				                	<a href="#">{{coupon.productCategory}}</a>
+				                </div> 
+						    </div>
+		   	   	  	 </div>
+		   	   	  </div>
+		   	   	  <div class="row">
+		   	   	  	 <div class="col-md-3" id="c100127" ng-repeat="coupon in resultData | orderBy:sortByData">
+		   	   	  	 	<div ng-if="(coupon.rank!==0 || coupon.rank!==null)">
+		   	   	  	 		<div class="offer-small offer">
+						         <div class="vendor-image" style="background-color:#ffffff">
+						            <a href="#"><img src="img/{{coupon.couponIssuerSite}}.jpg" alt="{{coupon.couponIssuerSite}}"></a>
+						        </div>
+						        <div id="c100127" class="offer-title ">
+						            <a href="#">{{coupon.couponInfo}} on {{coupon.productName}}</a>
+						        </div>
+					            <div class="offer-getcode">
+									<div href="#" class="btn btn-cd btn-coupon coupon-click" >Avail {{coupon.discountPc}} %</div>
+					             </div>
+					             <div class="vendor-offer-count trim-content">
+				                	<a href="#">{{coupon.productCategory}}</a>
+				                </div> 
+		   	   	  	 	</div>
+					</div>
+		   	   	  </div>
+		   	   </div>
+		   </div>
