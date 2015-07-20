@@ -1,4 +1,5 @@
 FROM java:8
+MAINTAINER Gaurav Rawat
 VOLUME /tmp
 EXPOSE 8080
 ADD couponclues-0.0.1-SNAPSHOT.jar app.jar
